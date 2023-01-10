@@ -1,2 +1,2 @@
-../Core/Src/stm32l0xx_hal_msp.c:76:6:HAL_MspInit	8	static
-../Core/Src/stm32l0xx_hal_msp.c:88:6:HAL_MspDeInit	8	static
+stm32l0xx_hal_msp.c:76:6:HAL_MspInit	8	static
+stm32l0xx_hal_msp.c:88:6:HAL_MspDeInit	8	static

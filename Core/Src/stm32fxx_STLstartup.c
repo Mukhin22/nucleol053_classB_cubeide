@@ -239,88 +239,88 @@ void STL_StartUp(void)
         FailSafePOR();
     }
 
-//  control_flow_call(CRC32_TEST_CALLER);
-//  /* Compute the 32-bit crc of the whole Flash by CRC unit except the checksum
-//     pattern stored at top of FLASH */
+  control_flow_call(CRC32_TEST_CALLER);
+  /* Compute the 32-bit crc of the whole Flash by CRC unit except the checksum
+     pattern stored at top of FLASH */
 //  for (volatile int i = 0; i < 32000000; i++); // delay 1 sec
-//  __CRC_CLK_ENABLE();
-//
-//  CrcHandle.Instance = CRC;
-//  #ifdef  CRC_UNIT_CONFIGURABLE
-//    CrcHandle.Init.DefaultPolynomialUse    = DEFAULT_POLYNOMIAL_ENABLE;
-//    CrcHandle.Init.DefaultInitValueUse     = DEFAULT_INIT_VALUE_ENABLE;
-//    CrcHandle.Init.InputDataInversionMode  = CRC_INPUTDATA_INVERSION_NONE;
-//    CrcHandle.Init.OutputDataInversionMode = CRC_OUTPUTDATA_INVERSION_DISABLED;
-//    CrcHandle.InputDataFormat              = CRC_INPUTDATA_FORMAT_WORDS;
-//  #endif
-//  HAL_CRC_Init(&CrcHandle);
-//
-//  #ifdef __IAR_SYSTEMS_ICC__  /* IAR Compiler */
-//    /* ==============================================================================*/
-//    /* MISRA violation of rule 11.4, 17.4 - pointer arithmetic is used for
-//       CRC calculation */
-//    #pragma diag_suppress=Pm088,Pm141
-//  #endif  /* __IAR_SYSTEMS_ICC__ */
-//
-///* the next lines replaces the standard HAL function call
-//   crc_result = HAL_CRC_Calculate(&CrcHandle, (uint32_t *)ROM_START, (uint32_t)ROM_SIZEinWORDS);
-//  due to bug at IAR linker - check sum computation can't support both big & little endian  */
-//
-//  for(index = 0; index < (uint32_t)ROM_SIZEinWORDS; index++)
-//  {
-//    CRC->DR = __REV(*((uint32_t *)ROM_START + index));
-//  }
-//  crc_result = CRC->DR;
-//
-//  #ifdef __IAR_SYSTEMS_ICC__  /* IAR Compiler */
-//    #pragma diag_default=Pm088,Pm141
-//    /* ==============================================================================*/
-//  #endif  /* __IAR_SYSTEMS_ICC__ */
-//
-//  control_flow_resume(CRC32_TEST_CALLER);
-//  /* Store pattern for regular 32-bit crc computation */
-//  control_flow_call(CRC_TEST_CALLER);
-//  /* ==============================================================================*/
-//  /* MISRA violation of rule 10.1, 11.3 and 11.4: integral casting and pointer arithmetic
-//     is used here to manage the crc computation and Check Class B var integrity */
-//
-//  #ifdef __IAR_SYSTEMS_ICC__  /* IAR Compiler */
-//    #pragma diag_suppress=Pm129,Pm140,Pm141
-//
-//    if(crc_result != *(uint32_t *)(&REF_CRC32))
-//
-//    #pragma diag_default=Pm129,Pm140,Pm141
-//  #endif  /* __IAR_SYSTEMS_ICC__ */
-//  /* ==============================================================================*/
-//
-//  #if defined(__CC_ARM) || defined(__GNUC__)             /* KEIL or GCC Compiler */
-//    /* Computed 32-bit crc check is temporary stored at crc_result. This value must be copied
-//       into __Check_Sum address placed at the end of Flash area (see file startup_stm32fxx.s)
-//       Condition here can be reversed for debugging */
-//
-//    if(crc_result != *(uint32_t *)(&REF_CRC32))
-//  #endif  /* __CC_ARM */
-//    {
-//      #ifdef STL_VERBOSE_POR
-//        printf("FLASH 32-bit CRC Error at Start-up\n\r");
-//      #endif  /* STL_VERBOSE_POR */
-//      FailSafePOR();
-//    }
-//    else
-//    { /* Test OK */
-//      #ifdef STL_VERBOSE_POR
-//        printf(" Start-up FLASH 32-bit CRC OK\n\r");
-//      #endif  /* STL_VERBOSE_POR */
-//
-//      /* If else statement is not executed, it will be detected by control flow monitoring */
-//      control_flow_resume(CRC_TEST_CALLER);
-//    }
-//
-//  HAL_CRC_DeInit(&CrcHandle);
-//  #ifdef STL_EVAL_MODE
-//    /* LED_NVM Off for debug purposes */
-//    BSP_LED_Off(LED_NVM);
-//  #endif /* STL_EVAL_MODE */
+  __CRC_CLK_ENABLE();
+
+  CrcHandle.Instance = CRC;
+  #ifdef  CRC_UNIT_CONFIGURABLE
+    CrcHandle.Init.DefaultPolynomialUse    = DEFAULT_POLYNOMIAL_ENABLE;
+    CrcHandle.Init.DefaultInitValueUse     = DEFAULT_INIT_VALUE_ENABLE;
+    CrcHandle.Init.InputDataInversionMode  = CRC_INPUTDATA_INVERSION_NONE;
+    CrcHandle.Init.OutputDataInversionMode = CRC_OUTPUTDATA_INVERSION_DISABLED;
+    CrcHandle.InputDataFormat              = CRC_INPUTDATA_FORMAT_WORDS;
+  #endif
+  HAL_CRC_Init(&CrcHandle);
+
+  #ifdef __IAR_SYSTEMS_ICC__  /* IAR Compiler */
+    /* ==============================================================================*/
+    /* MISRA violation of rule 11.4, 17.4 - pointer arithmetic is used for
+       CRC calculation */
+    #pragma diag_suppress=Pm088,Pm141
+  #endif  /* __IAR_SYSTEMS_ICC__ */
+
+/* the next lines replaces the standard HAL function call
+   crc_result = HAL_CRC_Calculate(&CrcHandle, (uint32_t *)ROM_START, (uint32_t)ROM_SIZEinWORDS);
+  due to bug at IAR linker - check sum computation can't support both big & little endian  */
+
+  for(index = 0; index < (uint32_t)ROM_SIZEinWORDS; index++)
+  {
+    CRC->DR = __REV(*((uint32_t *)ROM_START + index));
+  }
+  crc_result = CRC->DR;
+
+  #ifdef __IAR_SYSTEMS_ICC__  /* IAR Compiler */
+    #pragma diag_default=Pm088,Pm141
+    /* ==============================================================================*/
+  #endif  /* __IAR_SYSTEMS_ICC__ */
+
+  control_flow_resume(CRC32_TEST_CALLER);
+  /* Store pattern for regular 32-bit crc computation */
+  control_flow_call(CRC_TEST_CALLER);
+  /* ==============================================================================*/
+  /* MISRA violation of rule 10.1, 11.3 and 11.4: integral casting and pointer arithmetic
+     is used here to manage the crc computation and Check Class B var integrity */
+
+  #ifdef __IAR_SYSTEMS_ICC__  /* IAR Compiler */
+    #pragma diag_suppress=Pm129,Pm140,Pm141
+
+    if(crc_result != *(uint32_t *)(&REF_CRC32))
+
+    #pragma diag_default=Pm129,Pm140,Pm141
+  #endif  /* __IAR_SYSTEMS_ICC__ */
+  /* ==============================================================================*/
+
+  #if defined(__CC_ARM) || defined(__GNUC__)             /* KEIL or GCC Compiler */
+    /* Computed 32-bit crc check is temporary stored at crc_result. This value must be copied
+       into __Check_Sum address placed at the end of Flash area (see file startup_stm32fxx.s)
+       Condition here can be reversed for debugging */
+
+    if(crc_result != *(uint32_t *)(&REF_CRC32))
+  #endif  /* __CC_ARM */
+    {
+      #ifdef STL_VERBOSE_POR
+        printf("FLASH 32-bit CRC Error at Start-up\n\r");
+      #endif  /* STL_VERBOSE_POR */
+      FailSafePOR();
+    }
+    else
+    { /* Test OK */
+      #ifdef STL_VERBOSE_POR
+        printf(" Start-up FLASH 32-bit CRC OK\n\r");
+      #endif  /* STL_VERBOSE_POR */
+
+      /* If else statement is not executed, it will be detected by control flow monitoring */
+      control_flow_resume(CRC_TEST_CALLER);
+    }
+
+  HAL_CRC_DeInit(&CrcHandle);
+  #ifdef STL_EVAL_MODE
+    /* LED_NVM Off for debug purposes */
+    BSP_LED_Off(LED_NVM);
+  #endif /* STL_EVAL_MODE */
 
   /*--------------------------------------------------------------------------*/
   /*   Verify Control flow before RAM init (which clears Ctrl flow counters)  */

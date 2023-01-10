@@ -1,2 +1,2 @@
-../Core/Src/stm32fxx_STLcrc32Run.c:67:6:STL_FlashCrc32Init	8	static
-../Core/Src/stm32fxx_STLcrc32Run.c:96:18:STL_crc32Run	32	static
+stm32fxx_STLcrc32Run.c:67:6:STL_FlashCrc32Init	8	static
+stm32fxx_STLcrc32Run.c:96:18:STL_crc32Run	32	static
