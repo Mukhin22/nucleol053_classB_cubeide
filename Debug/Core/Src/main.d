@@ -46,15 +46,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_smartcard.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_smartcard_ex.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_wwdg.h \
- ../Core/Inc/stm32fxx_STLparam.h \
- C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLlib.h \
- C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLclassBvar.h \
- C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLstartup.h \
- C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLmain.h \
- C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLcpu.h \
- C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLclock.h \
- C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLcrc32.h \
- C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLRam.h
+ ../Core/Inc/stm32fxx_STLparam.h ../Core/Inc/stm32fxx_STLlib.h \
+ ../Core/Inc/stm32fxx_STLparam.h ../Core/Inc/stm32fxx_STLclassBvar.h \
+ ../Core/Inc/stm32fxx_STLstartup.h ../Core/Inc/stm32fxx_STLmain.h \
+ ../Core/Inc/stm32fxx_STLcpu.h ../Core/Inc/stm32fxx_STLclock.h \
+ ../Core/Inc/stm32fxx_STLcrc32.h ../Core/Inc/stm32fxx_STLRam.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:
 ../Core/Inc/stm32l0xx_hal_conf.h:
@@ -104,11 +100,12 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_smartcard_ex.h:
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_wwdg.h:
 ../Core/Inc/stm32fxx_STLparam.h:
-C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLlib.h:
-C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLclassBvar.h:
-C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLstartup.h:
-C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLmain.h:
-C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLcpu.h:
-C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLclock.h:
-C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLcrc32.h:
-C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc/stm32fxx_STLRam.h:
+../Core/Inc/stm32fxx_STLlib.h:
+../Core/Inc/stm32fxx_STLparam.h:
+../Core/Inc/stm32fxx_STLclassBvar.h:
+../Core/Inc/stm32fxx_STLstartup.h:
+../Core/Inc/stm32fxx_STLmain.h:
+../Core/Inc/stm32fxx_STLcpu.h:
+../Core/Inc/stm32fxx_STLclock.h:
+../Core/Inc/stm32fxx_STLcrc32.h:
+../Core/Inc/stm32fxx_STLRam.h:

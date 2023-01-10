@@ -5,8 +5,8 @@ REM Batch script for generating CRC in SW4STM32 project
 REM Must be placed at SW4STM32/<TARGET> folder
 
 REM Path configuration
-SET SREC_PATH=C:\SREC
-SET TARGET_NAME=STM32L0xx_Nucleo
+SET SREC_PATH=C:\srecord\bin
+SET TARGET_NAME=nucleol053_classB_cubeide
 SET BYTE_SWAP=1
 SET COMPARE_HEX=1
 SET CRC_ADDR_FROM_MAP=1
@@ -14,7 +14,7 @@ REM Not used when CRC_ADDR_FROM_MAP=1
 SET CRC_ADDR=0x08009000
 
 REM Derived configuration
-SET MAP_FILE=output.map
+SET MAP_FILE=%TARGET_NAME%.map
 SET INPUT_BIN=%TARGET_NAME%.bin -binary
 SET INPUT_HEX=%TARGET_NAME%.hex -intel
 SET OUTPUT_HEX=%TARGET_NAME%_CRC.hex -intel

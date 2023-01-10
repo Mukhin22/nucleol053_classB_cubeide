@@ -143,7 +143,7 @@ __FULL2_LOOP:
   CMP   R6,R2
   BNE   __FULL_ERR
   STR   R3,[R5,#+4]
-.ifdef ARTISAN
+#ifdef ARTISAN
   LDR   R6,[R5,#+12]
   CMP   R6,R2
   BNE   __FULL_ERR
@@ -152,7 +152,7 @@ __FULL2_LOOP:
   CMP   R6,R2
   BNE   __FULL_ERR
   STR   R3,[R5,#+8]
- .else
+ #else
   LDR   R6,[R5,#+8]
   CMP   R6,R2
   BNE   __FULL_ERR
@@ -161,7 +161,7 @@ __FULL2_LOOP:
   CMP   R6,R2
   BNE   __FULL_ERR
   STR   R3,[R5,#+12]
- .endif /* ARTISAN */
+ #endif /* ARTISAN */
   ADDS  R5,R5,#+16
   B     __FULL2_LOOP
   
@@ -180,7 +180,7 @@ __FULL3_LOOP:
   CMP   R6,R3
   BNE   __FULL_ERR
   STR   R2,[R5,#+4]
-.ifdef ARTISAN
+#ifdef ARTISAN
   LDR   R6,[R5,#+12]
   CMP   R6,R3
   BNE   __FULL_ERR
@@ -189,7 +189,7 @@ __FULL3_LOOP:
   CMP   R6,R3
   BNE   __FULL_ERR
   STR   R2,[R5,#+8]
-.else
+#else
   LDR   R6,[R5,#+8]
   CMP   R6,R3
   BNE   __FULL_ERR
@@ -198,7 +198,7 @@ __FULL3_LOOP:
   CMP   R6,R3
   BNE   __FULL_ERR
   STR   R2,[R5,#+12]
-.endif /* ARTISAN */
+#endif /* ARTISAN */
   ADDS  R5,R5,#+16
   B     __FULL3_LOOP
 
@@ -210,7 +210,7 @@ __FULLSTEP_4:
 __FULL4_LOOP:
   CMP   R5,R0
   BLO   __FULLSTEP_5
-.ifdef ARTISAN
+#ifdef ARTISAN
   LDR   R6,[R5,#+8]
   CMP   R6,R2
   BNE   __FULL_ERR
@@ -219,7 +219,7 @@ __FULL4_LOOP:
   CMP   R6,R2
   BNE   __FULL_ERR
   STR   R3,[R5,#+12]
- .else
+ #else
   LDR   R6,[R5,#+12]
   CMP   R6,R2
   BNE   __FULL_ERR
@@ -228,7 +228,7 @@ __FULL4_LOOP:
   CMP   R6,R2
   BNE   __FULL_ERR
   STR   R3,[R5,#+8]
- .endif /* ARTISAN */
+ #endif /* ARTISAN */
   LDR   R6,[R5,#+4]
   CMP   R6,R2
   BNE   __FULL_ERR
@@ -248,7 +248,7 @@ __FULLSTEP_5:
 __FULL5_LOOP:
   CMP   R5,R0
   BLO   __FULLSTEP_6
-.ifdef ARTISAN
+#ifdef ARTISAN
   LDR   R6,[R5,#+8]
   CMP   R6,R3
   BNE   __FULL_ERR
@@ -257,7 +257,7 @@ __FULL5_LOOP:
   CMP   R6,R3
   BNE   __FULL_ERR
   STR   R2,[R5,#+12]
-.else
+#else
   LDR   R6,[R5,#+12]
   CMP   R6,R3
   BNE   __FULL_ERR
@@ -266,7 +266,7 @@ __FULL5_LOOP:
   CMP   R6,R3
   BNE   __FULL_ERR
   STR   R2,[R5,#+8]
- .endif /* ARTISAN */
+ #endif /* ARTISAN */
   LDR   R6,[R5,#+4]
   CMP   R6,R3
   BNE   __FULL_ERR
@@ -330,11 +330,11 @@ STL_TranspRamMarchCXStep:
   RSBS  R3, R3, #0
   SUBS  R3,R3, #1  
 
-.ifdef ARTISAN
+#ifdef ARTISAN
   LDR   R4, =__ARTISAN_RAM_ORDER /* setup pointer to physical order of the addresses (R4) */
-.else
+#else
   LDR   R4, =__STANDARD_RAM_ORDER
-.endif /* ARTISAN */
+#endif /* ARTISAN */
 
   MOVS  R5,R0       /* backup buffer to be tested? */
   CMP   R5,R1
@@ -373,7 +373,7 @@ __STEP2_LOOP:
   CMP   R5, #20
   BLE   __STEP2_LOOP
 
-.ifndef USE_MARCHX_TEST
+#ifndef USE_MARCHX_TEST
 /* *** Step 3 *** (not used at March-X test)  */
 /* Verify inverted background and write background with addresses increasing */
   MOVS  R5, #0
@@ -399,7 +399,7 @@ __STEP4_LOOP:
   STR   R3,[R0, R6]  /* store inverted background pattrern */
   CMP   R5, #0      
   BHI   __STEP4_LOOP
-.endif /* March-X  */
+#endif /* March-X  */
   
 /* *** Step 5 *** */
 /* Verify inverted background and write background with addresses decreasing  */
@@ -462,7 +462,7 @@ __BUFF2_LOOP:
   CMP   R5, #32
   BLE   __BUFF2_LOOP
   
-.ifndef USE_MARCHX_TEST
+#ifndef USE_MARCHX_TEST
 /* *** Step 3 *** (not used at March-X test) */
 /* Verify inverted background and write background with addresses increasing */
   MOVS  R5, #4
@@ -488,7 +488,7 @@ __BUFF4_LOOP:
   STR   R3,[R0, R6]  /* store inverted background pattrern */
   CMP   R5, #4
   BHI   __BUFF4_LOOP
-.endif /* March-X  */
+#endif /* March-X  */
 
 /* *** Step 5 *** */
 /* Verify inverted background and write background with addresses decreasing */

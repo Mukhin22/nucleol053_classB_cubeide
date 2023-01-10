@@ -54,8 +54,8 @@
 #define STL_VERBOSE            /* During main program execution  */
 
 /* uncoment next lines to configure watchdogs & resets for debug purposes */
-#define USE_INDEPENDENT_WDOG
-#define USE_WINDOW_WDOG
+//#define USE_INDEPENDENT_WDOG
+//#define USE_WINDOW_WDOG
 
 /* comment out next lines to remove any eval board control */
 #define STL_EVAL_MODE
@@ -63,7 +63,7 @@
 /* #define STL_EVAL_LCD */
 
 /* comment out next line to force micro reset at fail mode */
-#define NO_RESET_AT_FAIL_MODE
+//#define NO_RESET_AT_FAIL_MODE
 
 /* comment out next line when CRC unit is not configurable */
 #define CRC_UNIT_CONFIGURABLE
@@ -72,7 +72,7 @@
 #define IWDG_FEATURES_BY_WINDOW_OPTION
 
 /* comment out next line when HSE clock is not used - clock test then runs based on HSI */
-/* #define HSE_CLOCK_APPLIED */
+#define HSE_CLOCK_APPLIED
 
 /* system clock & HSE when HSE is applied as PLL source */
 #if !defined  (HSE_VALUE) 

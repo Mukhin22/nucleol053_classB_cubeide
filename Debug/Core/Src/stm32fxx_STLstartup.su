@@ -1,0 +1,5 @@
+../Drivers/CMSIS/Include/core_cm0plus.h:983:34:__NVIC_SystemReset	8	static,ignoring_inline_asm
+../Core/Src/stm32fxx_STLstartup.c:71:6:FailSafePOR	8	static
+../Core/Src/stm32fxx_STLstartup.c:139:6:STL_StartUp	40	static,ignoring_inline_asm
+../Core/Src/stm32fxx_STLstartup.c:570:6:STL_WDGSelfTest	8	static
+../Core/Src/stm32fxx_STLstartup.c:690:13:control_flow_check_point	24	static

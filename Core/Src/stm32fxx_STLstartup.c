@@ -238,7 +238,7 @@ void STL_StartUp(void)
   control_flow_call(CRC32_TEST_CALLER);
   /* Compute the 32-bit crc of the whole Flash by CRC unit except the checksum
      pattern stored at top of FLASH */
-  
+  for (volatile int i = 0; i < 32000000; i++); // delay 1 sec
   __CRC_CLK_ENABLE();
   
   CrcHandle.Instance = CRC;

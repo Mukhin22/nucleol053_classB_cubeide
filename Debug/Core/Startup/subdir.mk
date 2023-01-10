@@ -25,7 +25,7 @@ S_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Core/Startup/%.o: ../Core/Startup/%.s Core/Startup/subdir.mk
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -g3 -DDEBUG -c -I"C:/Users/strngr/STM32CubeIDE/workspace_1.11.0/test/Middlewares/STM32_SelfTest_Library/inc" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -g3 -DDEBUG -DUSE_MARCHX_TEST -DARTISAN -c -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@" "$<"
 
 clean: clean-Core-2f-Startup
 

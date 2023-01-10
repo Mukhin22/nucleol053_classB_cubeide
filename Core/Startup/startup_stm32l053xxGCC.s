@@ -186,7 +186,7 @@ g_pfnVectors:
   .word  0
   .word  0
   .word  SVC_Handler
-  .word  DebugMon_Handler
+  .word  0
   .word  0
   .word  PendSV_Handler
   .word  SysTick_Handler
@@ -239,9 +239,6 @@ g_pfnVectors:
 
    .weak      SVC_Handler
    .thumb_set SVC_Handler,Default_Handler
-
-   .weak      DebugMon_Handler
-   .thumb_set DebugMon_Handler,Default_Handler
 
    .weak      PendSV_Handler
    .thumb_set PendSV_Handler,Default_Handler
