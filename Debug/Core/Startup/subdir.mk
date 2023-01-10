@@ -5,22 +5,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 S_SRCS += \
-../Core/Startup/startup_stm32l053xxGCC.s \
-../Core/Startup/stm32l0xx_STLRamMcMxGCC.s \
-../Core/Startup/stm32l0xx_STLcpurunGCC.s \
-../Core/Startup/stm32l0xx_STLcpustartGCC.s 
+../Core/Startup/startup_stm32l053xxGCC.s 
 
 OBJS += \
-./Core/Startup/startup_stm32l053xxGCC.o \
-./Core/Startup/stm32l0xx_STLRamMcMxGCC.o \
-./Core/Startup/stm32l0xx_STLcpurunGCC.o \
-./Core/Startup/stm32l0xx_STLcpustartGCC.o 
+./Core/Startup/startup_stm32l053xxGCC.o 
 
 S_DEPS += \
-./Core/Startup/startup_stm32l053xxGCC.d \
-./Core/Startup/stm32l0xx_STLRamMcMxGCC.d \
-./Core/Startup/stm32l0xx_STLcpurunGCC.d \
-./Core/Startup/stm32l0xx_STLcpustartGCC.d 
+./Core/Startup/startup_stm32l053xxGCC.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -30,7 +21,7 @@ Core/Startup/%.o: ../Core/Startup/%.s Core/Startup/subdir.mk
 clean: clean-Core-2f-Startup
 
 clean-Core-2f-Startup:
-	-$(RM) ./Core/Startup/startup_stm32l053xxGCC.d ./Core/Startup/startup_stm32l053xxGCC.o ./Core/Startup/stm32l0xx_STLRamMcMxGCC.d ./Core/Startup/stm32l0xx_STLRamMcMxGCC.o ./Core/Startup/stm32l0xx_STLcpurunGCC.d ./Core/Startup/stm32l0xx_STLcpurunGCC.o ./Core/Startup/stm32l0xx_STLcpustartGCC.d ./Core/Startup/stm32l0xx_STLcpustartGCC.o
+	-$(RM) ./Core/Startup/startup_stm32l053xxGCC.d ./Core/Startup/startup_stm32l053xxGCC.o
 
 .PHONY: clean-Core-2f-Startup
 

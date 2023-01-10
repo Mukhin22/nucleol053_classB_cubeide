@@ -48,7 +48,6 @@
   .cpu cortex-m0plus
   .fpu softvfp
   .thumb
-
   /*  Reference to the FailSafe routine to be executed in case of non-recoverable
      failure */
   .extern FailSafePOR
@@ -76,8 +75,11 @@
   .size  STL_RunTimeCPUTest, .-STL_RunTimeCPUTest
 
 STL_RunTimeCPUTest:
-    PUSH {R4-R7}        /* Safe registers */
-
+    PUSH {R4-R7}       /* Safe registers */
+    //STMDB SP!, {R4, R5, R6, R7, R8, R9, R10, R11}
+    //STMDB SP!, {R4-R11}
+    /* PUSH {R4, R5, R6, R7, R8, R9, R10, R11} */
+    //PUSH {R8-R11, !SP}
     /* This is for control flow test (ENTRY point) */
     LDR R0,=CtrlFlowCnt
     /* Assumes R1 OK   If not, error will be detected by R1 test and Ctrl flow test later on */
@@ -295,6 +297,10 @@ CPUTstCont:
     POP {R4-R7}         /* Restore registers */
 
     MOVS R0, #0x1       /* CPUTEST_SUCCESS */
+
+    /*LDMIA SP!, {R4, R5, R6, R7, R8, R9, R10, R11} */
+    /* POP {R4, R5, R6, R7, R8, R9, R10, R11} */
+    //POP {R8-R11}
     BX LR               /* return to the caller */
 
 /******************* (C) COPYRIGHT STMicroelectronics *****END OF FILE*****/

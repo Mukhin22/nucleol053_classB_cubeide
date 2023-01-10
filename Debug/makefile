@@ -55,6 +55,9 @@ nucleol053_classB_cubeide.list \
 OBJCOPY_HEX += \
 nucleol053_classB_cubeide.hex \
 
+OBJCOPY_BIN += \
+nucleol053_classB_cubeide.bin \
+
 
 # All Target
 all:
@@ -64,8 +67,8 @@ all:
 main-build: nucleol053_classB_cubeide.elf secondary-outputs
 
 # Tool invocations
-nucleol053_classB_cubeide.elf nucleol053_classB_cubeide.map: $(OBJS) $(USER_OBJS) C:\Users\strngr\STM32CubeIDE\workspace_1.11.0\test\STM32L053R8Tx_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "nucleol053_classB_cubeide.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\strngr\STM32CubeIDE\workspace_1.11.0\test\STM32L053R8Tx_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleol053_classB_cubeide.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+nucleol053_classB_cubeide.elf nucleol053_classB_cubeide.map: $(OBJS) $(USER_OBJS) /home/strngr/Projects/nucleol053_classB_cubeide/STM32L053R8Tx_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "nucleol053_classB_cubeide.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"/home/strngr/Projects/nucleol053_classB_cubeide/STM32L053R8Tx_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleol053_classB_cubeide.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -84,16 +87,21 @@ nucleol053_classB_cubeide.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_T
 	@echo 'Finished building: $@'
 	@echo ' '
 
+nucleol053_classB_cubeide.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "nucleol053_classB_cubeide.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) default.size.stdout nucleol053_classB_cubeide.elf nucleol053_classB_cubeide.hex nucleol053_classB_cubeide.list nucleol053_classB_cubeide.map
+	-$(RM) default.size.stdout nucleol053_classB_cubeide.bin nucleol053_classB_cubeide.elf nucleol053_classB_cubeide.hex nucleol053_classB_cubeide.list nucleol053_classB_cubeide.map
 	-@echo ' '
 
 post-build:
-	crc_gen_gcc.bat
+	./crc_gen_gcc.sh
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

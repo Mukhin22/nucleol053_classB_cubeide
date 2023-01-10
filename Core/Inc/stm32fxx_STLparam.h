@@ -63,7 +63,7 @@
 /* #define STL_EVAL_LCD */
 
 /* comment out next line to force micro reset at fail mode */
-//#define NO_RESET_AT_FAIL_MODE
+#define NO_RESET_AT_FAIL_MODE
 
 /* comment out next line when CRC unit is not configurable */
 #define CRC_UNIT_CONFIGURABLE
