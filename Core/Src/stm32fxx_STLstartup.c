@@ -136,7 +136,7 @@ void FailSafePOR(void)
   *   Flash interface initialized, Systick timer ON (2ms timebase)
   * @retval : None
   */
-void STL_StartUp(void)
+  __attribute__((optimize(0))) void STL_StartUp(void)
 {
   uint32_t crc_result;
   uint32_t index;

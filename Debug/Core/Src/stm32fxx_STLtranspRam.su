@@ -1,2 +1,2 @@
-stm32fxx_STLtranspRam.c:62:6:STL_TranspMarchInit	8	static
-stm32fxx_STLtranspRam.c:77:18:STL_TranspMarch	16	static
+../Core/Src/stm32fxx_STLtranspRam.c:62:6:STL_TranspMarchInit	8	static
+../Core/Src/stm32fxx_STLtranspRam.c:77:18:STL_TranspMarch	16	static

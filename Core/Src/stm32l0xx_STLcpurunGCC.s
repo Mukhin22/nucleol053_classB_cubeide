@@ -75,8 +75,17 @@
   .size  STL_RunTimeCPUTest, .-STL_RunTimeCPUTest
 
 STL_RunTimeCPUTest:
-    PUSH {R4-R7}       /* Safe registers */
-    //STMDB SP!, {R4, R5, R6, R7, R8, R9, R10, R11}
+    PUSH {R4-R7}       // Safe critical registers
+
+    MOV R4,R8
+
+    MOV R5,R9
+
+    MOV R6,R10
+
+    MOV R7,R11
+
+    PUSH {R4-R7}    //STMDB SP!, {R4, R5, R6, R7, R8, R9, R10, R11}
     //STMDB SP!, {R4-R11}
     /* PUSH {R4, R5, R6, R7, R8, R9, R10, R11} */
     //PUSH {R8-R11, !SP}
